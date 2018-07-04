@@ -1,0 +1,8 @@
+{
+  "name": "okta-ionic-starter",
+  "app_id": "6779b9e1",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
