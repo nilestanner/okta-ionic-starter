@@ -15,8 +15,12 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # node-sass 4.12 only ships prebuilt binaries up to Node 12 and
+          # otherwise needs python2 for node-gyp, which runners no longer have.
+          node-version: 12
           cache: npm
+      # Node 12's bundled npm 6 can't read the v3 lockfile; npm 8 still supports Node 12.
+      - run: npm install -g npm@8
       - run: npm ci --legacy-peer-deps
       - run: npm run lint
       - run: npm run build
